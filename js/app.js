@@ -88,6 +88,21 @@ createApp({
             this.resultadoVisible = true;
         },
 
+        limpiar() {
+            this.nota1 = null;
+            this.nota2 = null;
+            this.nota3 = null;
+            this.asistencia = null;
+            this.nota1Error = '';
+            this.nota2Error = '';
+            this.nota3Error = '';
+            this.asistenciaError = '';
+            this.promedio = 0;
+            this.aprobado = false;
+            this.resultadoVisible = false;
+            this.mensajeResultado = '';
+        },
+
         validarNombre() {
             if (!this.nombre.trim()) {
                 this.nombreError = 'El nombre es obligatorio';

@@ -56,6 +56,7 @@
                     </div>
 
                     <button class="btn btn-primary" @click="calcular">Calcular</button>
+                    <button class="btn btn-secondary ms-2" @click="limpiar">Limpiar</button>
 
                     <div v-if="resultadoVisible" class="mt-4 p-3 rounded border" :class="aprobado ? 'bg-success text-white' : 'bg-danger text-white'">
                         <p class="mb-1 fs-5"><strong>Promedio ponderado: {{ promedio }}</strong></p>
