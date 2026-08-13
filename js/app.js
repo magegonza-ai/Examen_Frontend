@@ -3,6 +3,7 @@ const { createApp } = Vue;
 createApp({
     data() {
         return {
+            // Cálculo de calificaciones
             nota1: null,
             nota2: null,
             nota3: null,
@@ -14,7 +15,17 @@ createApp({
             promedio: 0,
             aprobado: false,
             resultadoVisible: false,
-            mensajeResultado: ''
+            mensajeResultado: '',
+
+            // Formulario de registro
+            nombre: '',
+            correo: '',
+            password: '',
+            repeatPassword: '',
+            nombreError: '',
+            correoError: '',
+            passwordError: '',
+            repeatPasswordError: ''
         };
     },
     methods: {
@@ -75,6 +86,63 @@ createApp({
             }
 
             this.resultadoVisible = true;
+        },
+
+        validarNombre() {
+            if (!this.nombre.trim()) {
+                this.nombreError = 'El nombre es obligatorio';
+            } else {
+                this.nombreError = '';
+            }
+        },
+        validarCorreo() {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!this.correo.trim()) {
+                this.correoError = 'El correo es obligatorio';
+            } else if (!emailRegex.test(this.correo)) {
+                this.correoError = 'El formato del correo no es válido';
+            } else {
+                this.correoError = '';
+            }
+        },
+        validarPassword() {
+            if (!this.password) {
+                this.passwordError = 'La contraseña es obligatoria';
+            } else {
+                this.passwordError = '';
+            }
+            if (this.repeatPassword) {
+                this.validarRepeatPassword();
+            }
+        },
+        validarRepeatPassword() {
+            if (!this.repeatPassword) {
+                this.repeatPasswordError = 'Debe repetir la contraseña';
+            } else if (this.password !== this.repeatPassword) {
+                this.repeatPasswordError = 'Las contraseñas no coinciden';
+            } else {
+                this.repeatPasswordError = '';
+            }
+        },
+        enviarRegistro() {
+            this.validarNombre();
+            this.validarCorreo();
+            this.validarPassword();
+            this.validarRepeatPassword();
+
+            if (this.nombreError || this.correoError || this.passwordError || this.repeatPasswordError) {
+                return;
+            }
+
+            alert('El registro se ha realizado correctamente');
+            this.nombre = '';
+            this.correo = '';
+            this.password = '';
+            this.repeatPassword = '';
+            this.nombreError = '';
+            this.correoError = '';
+            this.passwordError = '';
+            this.repeatPasswordError = '';
         }
     }
 }).mount('#app');
