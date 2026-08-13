@@ -27,6 +27,31 @@
 
             <div class="tab-content p-4 border border-top-0 rounded-bottom shadow-sm bg-white">
                 <div class="tab-pane fade show active" id="calificaciones" role="tabpanel" aria-labelledby="calificaciones-tab">
+                    <h3 class="mb-3">Cálculo de calificaciones</h3>
+
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-4">
+                            <label class="form-label">Nota 1 (10 - 70)</label>
+                            <input type="number" class="form-control" min="10" max="70" placeholder="Ingrese nota 1">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Nota 2 (10 - 70)</label>
+                            <input type="number" class="form-control" min="10" max="70" placeholder="Ingrese nota 2">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Nota 3 (10 - 70)</label>
+                            <input type="number" class="form-control" min="10" max="70" placeholder="Ingrese nota 3">
+                        </div>
+                    </div>
+
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-4">
+                            <label class="form-label">Asistencia (0 - 100)</label>
+                            <input type="number" class="form-control" min="0" max="100" placeholder="Ingrese asistencia">
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary">Calcular</button>
                 </div>
                 <div class="tab-pane fade" id="registro" role="tabpanel" aria-labelledby="registro-tab">
                 </div>
