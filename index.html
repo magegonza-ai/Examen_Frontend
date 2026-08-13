@@ -32,26 +32,35 @@
                     <div class="row g-3 mb-3">
                         <div class="col-md-4">
                             <label class="form-label">Nota 1 (10 - 70)</label>
-                            <input type="number" class="form-control" min="10" max="70" placeholder="Ingrese nota 1">
+                            <input type="number" class="form-control" v-model.number="nota1" @input="validarNota1" min="10" max="70" placeholder="Ingrese nota 1">
+                            <small v-if="nota1Error" class="text-danger">{{ nota1Error }}</small>
                         </div>
                         <div class="col-md-4">
                             <label class="form-label">Nota 2 (10 - 70)</label>
-                            <input type="number" class="form-control" min="10" max="70" placeholder="Ingrese nota 2">
+                            <input type="number" class="form-control" v-model.number="nota2" @input="validarNota2" min="10" max="70" placeholder="Ingrese nota 2">
+                            <small v-if="nota2Error" class="text-danger">{{ nota2Error }}</small>
                         </div>
                         <div class="col-md-4">
                             <label class="form-label">Nota 3 (10 - 70)</label>
-                            <input type="number" class="form-control" min="10" max="70" placeholder="Ingrese nota 3">
+                            <input type="number" class="form-control" v-model.number="nota3" @input="validarNota3" min="10" max="70" placeholder="Ingrese nota 3">
+                            <small v-if="nota3Error" class="text-danger">{{ nota3Error }}</small>
                         </div>
                     </div>
 
                     <div class="row g-3 mb-3">
                         <div class="col-md-4">
                             <label class="form-label">Asistencia (0 - 100)</label>
-                            <input type="number" class="form-control" min="0" max="100" placeholder="Ingrese asistencia">
+                            <input type="number" class="form-control" v-model.number="asistencia" @input="validarAsistencia" min="0" max="100" placeholder="Ingrese asistencia">
+                            <small v-if="asistenciaError" class="text-danger">{{ asistenciaError }}</small>
                         </div>
                     </div>
 
-                    <button class="btn btn-primary">Calcular</button>
+                    <button class="btn btn-primary" @click="calcular">Calcular</button>
+
+                    <div v-if="resultadoVisible" class="mt-4 p-3 rounded border" :class="aprobado ? 'bg-success text-white' : 'bg-danger text-white'">
+                        <p class="mb-1 fs-5"><strong>Promedio ponderado: {{ promedio }}</strong></p>
+                        <p class="mb-0 fs-5"><strong>{{ mensajeResultado }}</strong></p>
+                    </div>
                 </div>
                 <div class="tab-pane fade" id="registro" role="tabpanel" aria-labelledby="registro-tab">
                     <h3 class="mb-3">Formulario de registro</h3>
